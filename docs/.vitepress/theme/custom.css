@@ -710,6 +710,55 @@
   z-index: 1;
 }
 
+/* ===== Hero 头像图片 ===== */
+.VPHero .image-container {
+  position: relative;
+}
+
+.VPHero .image-container::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #e879f9, #38bdf8, #8b5cf6);
+  background-size: 300% 300%;
+  animation: borderRotate 4s linear infinite;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.VPHero .image-bg {
+  border-radius: 50% !important;
+  background: transparent !important;
+}
+
+.VPHero .image-src {
+  border-radius: 50% !important;
+  width: 280px !important;
+  height: 280px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.4),
+    0 0 40px rgba(139, 92, 246, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s !important;
+}
+
+.VPHero .image-src:hover {
+  transform: scale(1.03) !important;
+  box-shadow:
+    0 0 0 3px rgba(192, 132, 252, 0.6),
+    0 0 60px rgba(139, 92, 246, 0.4),
+    0 24px 70px rgba(0, 0, 0, 0.6) !important;
+}
+
 /* ===== 强调文字 ===== */
 .dark .vp-doc strong {
   color: rgba(255, 255, 255, 0.9) !important;
