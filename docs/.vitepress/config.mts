@@ -23,6 +23,7 @@ export default defineConfig({
       { text: '交易策略', link: '/trading/' },
       { text: '工具箱', link: '/tools/' },
       { text: '📕 红宝书', link: '/redbook/' },
+      { text: '📗 投资指南', link: '/guide/' },
       { text: '麒麟会情报', link: 'https://zx.bitdong.xyz', target: '_blank' },
     ],
 
@@ -116,6 +117,31 @@ export default defineConfig({
             { text: 'X：洗盘 / 现货 / 限价单', link: '/redbook/x' },
             { text: 'Y：预言机 / 以太坊 / 硬分叉…', link: '/redbook/y' },
             { text: 'Z：智能合约 / 助记词 / 做多…', link: '/redbook/z' },
+          ]
+        },
+      ],
+      '/guide/': [
+        {
+          text: '📗 币圈投资指南',
+          items: [
+            { text: '简介 & 作者序', link: '/guide/' },
+          ]
+        },
+        {
+          text: '📗 上册',
+          items: [
+            { text: '第一章：投资的刚需是避险', link: '/guide/chapter1' },
+            { text: '第二章：你真的在价值投资吗', link: '/guide/chapter2' },
+            { text: '第三章：币市赚钱的真相', link: '/guide/chapter3' },
+          ]
+        },
+        {
+          text: '📘 下册',
+          items: [
+            { text: '第四章：学会躺着挣钱', link: '/guide/chapter4' },
+            { text: '第五章：赋予币圈投资人生意义', link: '/guide/chapter5' },
+            { text: '第六章：会管理仓位才能盈利', link: '/guide/chapter6' },
+            { text: '第七章：热门高赞回答锦集', link: '/guide/chapter7' },
           ]
         },
       ],
