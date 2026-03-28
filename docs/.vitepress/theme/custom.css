@@ -1,0 +1,138 @@
+/* ============================================
+   跟着Bit东学Web3 - 自定义样式
+   风格对齐 bitdong.xyz 主站暗色系
+   ============================================ */
+
+:root {
+  --vp-c-brand-1: #7c3aed;
+  --vp-c-brand-2: #6d28d9;
+  --vp-c-brand-3: #5b21b6;
+  --vp-c-brand-soft: rgba(124, 58, 237, 0.14);
+
+  --vp-font-family-base: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+}
+
+.dark {
+  --vp-c-bg: #0d0d0f;
+  --vp-c-bg-soft: #141416;
+  --vp-c-bg-mute: #1a1a1e;
+  --vp-c-divider: rgba(255, 255, 255, 0.08);
+  --vp-c-text-1: rgba(255, 255, 255, 0.92);
+  --vp-c-text-2: rgba(255, 255, 255, 0.60);
+  --vp-c-text-3: rgba(255, 255, 255, 0.38);
+}
+
+/* ---- 顶部导航栏 ---- */
+.dark .VPNav {
+  background: rgba(13, 13, 15, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+/* ---- Logo 龙虾 emoji ---- */
+.VPNavBarTitle .logo {
+  font-size: 1.4rem;
+}
+
+/* ---- 侧边栏 ---- */
+.dark .VPSidebar {
+  background: #0d0d0f !important;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.dark .VPSidebarItem.is-active > .item .link .text {
+  color: #a78bfa !important;
+  font-weight: 600;
+}
+
+/* ---- 内容区 ---- */
+.dark .VPDoc {
+  background: #0d0d0f;
+}
+
+/* ---- 标题渐变 ---- */
+.dark h1 {
+  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- 代码块 ---- */
+.dark div[class*='language-'] {
+  background: #141416 !important;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 10px;
+}
+
+/* ---- 提示块 ---- */
+.dark .custom-block.tip {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.dark .custom-block.warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.dark .custom-block.danger {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* ---- 首页 Hero ---- */
+.VPHero .name {
+  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 40%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.VPHero .tagline {
+  opacity: 0.75;
+}
+
+/* ---- 首页特性卡片 ---- */
+.dark .VPFeature {
+  background: #141416 !important;
+  border: 1px solid rgba(124, 58, 237, 0.15) !important;
+  border-radius: 14px !important;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.dark .VPFeature:hover {
+  border-color: rgba(124, 58, 237, 0.5) !important;
+  transform: translateY(-3px);
+}
+
+/* ---- 链接 ---- */
+.dark a {
+  color: #a78bfa;
+}
+
+.dark a:hover {
+  color: #c084fc;
+}
+
+/* ---- footer ---- */
+.dark .VPFooter {
+  background: #0d0d0f;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.4);
+}
+
+/* ---- 滚动条 ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0f;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.7);
+}
