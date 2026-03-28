@@ -703,11 +703,30 @@ async function loadStats() {
 const CAT_ICONS = {
   bitdong:'🎓',guide:'📖',redbook:'📕',defi:'💰',trading:'📈',
   basics:'🔑',tools:'🛠️',wisdom:'💡',classics:'📚',
-  original:'✍️',projects:'🏗️','trading-secrets':'🤫',__root__:'📄'
+  original:'✍️',projects:'🏗️','trading-secrets':'🤫',__root__:'📄',
+  'web3-basics':'🔗'
+};
+
+// 目录中文名对照
+const CAT_NAMES = {
+  bitdong: 'Bit东知识库',
+  guide: '币圈投资指南',
+  redbook: '区块链红宝书',
+  defi: 'DeFi 专区',
+  trading: '交易策略',
+  basics: 'Web3 基础',
+  tools: '工具箱',
+  wisdom: '投资智慧',
+  classics: '经典著作',
+  original: '原创文章',
+  projects: '项目分析',
+  'trading-secrets': '交易秘籍',
+  'web3-basics': 'Web3 基础',
+  __root__: '根目录',
 };
 
 async function loadArticles() {
-  document.getElementById('list-body').innerHTML = '<div class="loading-text">拉取文章列表…</div>';
+  document.getElementById('list-body').innerHTML = '<div class="loading-text">📖 正在加载文章列表并解析标题，请稍候…</div>';
   try {
     const d = await api('/api/articles');
     if (d.error) throw new Error(d.error);
@@ -732,9 +751,10 @@ function renderArticleList(grouped) {
     allArticles.push(...files);
     total += files.length;
     const icon = CAT_ICONS[cat] || '📁';
+    const catDisplayName = CAT_NAMES[cat] || cat;
     const sec = document.createElement('div');
     sec.className = 'cat-section';
-    sec.innerHTML = `<div class="cat-label">${icon} ${cat === '__root__' ? '根目录' : cat} <span style="color:var(--text3);font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">${files.length} 篇</span></div><div class="articles-grid" data-cat="${cat}"></div>`;
+    sec.innerHTML = `<div class="cat-label">${icon} ${catDisplayName} <span style="color:var(--text3);font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">${files.length} 篇</span></div><div class="articles-grid" data-cat="${cat}"></div>`;
     container.appendChild(sec);
     const grid = sec.querySelector('.articles-grid');
     files.forEach(f => renderCard(f, grid));
@@ -745,21 +765,27 @@ function renderArticleList(grouped) {
 function renderCard(f, grid) {
   const card = document.createElement('div');
   card.className = 'a-card';
-  card.dataset.title = f.filename || '';
+  // 同时存 title 和 filename(slug) 用于搜索过滤
+  card.dataset.title = (f.title || f.filename || '').toLowerCase();
   card.dataset.path = f.path || '';
   const kb = f.size ? (f.size/1024).toFixed(1)+'KB' : '--';
-  const name = f.filename;
+  const displayTitle = f.title || f.filename;   // 真实标题优先
+  const slug = f.filename;                       // 原始 slug 作为副文本
+  const catLabel = CAT_NAMES[f.category] || f.category || '';
+  // 若标题与 slug 相同（无真实标题）则只显示一行
+  const showSlug = f.mdTitle && slug !== displayTitle;
   card.innerHTML = `
     <div class="a-actions">
       <button class="a-btn edit" onclick="openArticle('${f.path}',event)">编辑</button>
       <button class="a-btn mv" onclick="openRenameModal('${f.path}',event)">移动</button>
       <button class="a-btn del" onclick="delArticle('${f.path}','${f.sha}',event)">删除</button>
     </div>
-    <div class="a-title">${escHtml(name)}</div>
-    <div class="a-path">${f.path}</div>
+    <div class="a-title" title="${escHtml(displayTitle)}">${escHtml(displayTitle)}</div>
+    ${showSlug ? `<div class="a-path" style="font-family:'SF Mono',monospace">${escHtml(f.path)}</div>` : `<div class="a-path">${escHtml(f.path)}</div>`}
     <div class="a-meta">
       <span class="a-tag">${kb}</span>
-      <span class="a-tag">${f.category === '__root__' ? '根目录' : f.category}</span>
+      <span class="a-tag">${catLabel}</span>
+      ${f.mdTitle ? '' : '<span class="a-tag" style="background:rgba(245,158,11,.12);color:var(--yellow)" title="未找到 # 标题">无标题</span>'}
     </div>`;
   card.addEventListener('click', () => openArticle(f.path));
   grid.appendChild(card);
@@ -776,7 +802,8 @@ function renderArticlesVisible(q) {
   const cards = document.querySelectorAll('.a-card');
   cards.forEach(c => {
     if (!q) { c.style.display = ''; return; }
-    const match = (c.dataset.title + c.dataset.path).toLowerCase().includes(q);
+    // 同时搜索标题和路径
+    const match = (c.dataset.title + ' ' + c.dataset.path).toLowerCase().includes(q);
     c.style.display = match ? '' : 'none';
   });
   // 隐藏空分组标题
@@ -803,9 +830,10 @@ async function doFullSearch() {
     d.results.forEach(r => {
       const card = document.createElement('div');
       card.className = 'sr-card';
+      const displayTitle = r.title || r.filename;
       card.innerHTML = `
         <div class="sr-title">
-          <span class="${r.inTitle ? 'sr-title-match' : ''}">${escHtml(r.filename)}</span>
+          <span class="${r.inTitle ? 'sr-title-match' : ''}">${escHtml(displayTitle)}</span>
           ${r.inTitle ? '<span style="font-size:10px;background:rgba(124,58,237,.2);color:var(--accent2);padding:2px 6px;border-radius:10px">标题匹配</span>' : ''}
         </div>
         <div class="sr-path">${r.path}</div>
@@ -833,9 +861,18 @@ function switchListMode(mode) {
 // ═══════════════════════════════════════════════════════════
 async function openArticle(filePath, event) {
   if (event) event.stopPropagation();
+
+  // 1. 先切换到编辑器视图（让 UI 可见），同时显示加载状态
+  gotoView('editor', document.querySelector('[data-view="editor"]'));
+  document.getElementById('code-area').value = '';
+  document.getElementById('edit-path').value = filePath;
+  document.getElementById('preview-area').innerHTML = '<div style="padding:40px;color:var(--text3);text-align:center">加载中…</div>';
+
   try {
+    // 2. 加载文章内容
     const d = await api('/api/article?path=' + encodeURIComponent(filePath));
     if (d.error) throw new Error(d.error);
+
     currentFilePath = filePath;
     document.getElementById('edit-path').value = filePath;
     document.getElementById('code-area').value = d.content;
@@ -843,11 +880,15 @@ async function openArticle(filePath, event) {
     updateAutoSaveDot();
     updatePreview();
     updateWordCount();
-    updateOutline();
-    gotoView('editor', document.querySelector('[data-view="editor"]'));
+    if (showOutline) updateOutline();
+
+    // 3. 刷新左侧导航（不 await，后台更新即可）
     refreshNav(filePath);
-    toast('已打开 ' + filePath, 'i');
-  } catch(e) { toast('打开失败：' + e.message, 'e'); }
+    toast('已打开：' + filePath.split('/').pop(), 'i');
+  } catch(e) {
+    document.getElementById('preview-area').innerHTML = `<div style="padding:40px;color:var(--red);text-align:center">❌ 打开失败：${escHtml(e.message)}</div>`;
+    toast('打开失败：' + e.message, 'e');
+  }
 }
 
 async function refreshNav(activePath) {
@@ -860,12 +901,14 @@ async function refreshNav(activePath) {
       if (!files.length) continue;
       const label = document.createElement('div');
       label.className = 'nav-cat';
-      label.textContent = cat === '__root__' ? '根目录' : cat;
+      const catDisplayName = CAT_NAMES[cat] || (cat === '__root__' ? '根目录' : cat);
+      label.textContent = catDisplayName;
       nav.appendChild(label);
       files.forEach(f => {
         const item = document.createElement('div');
         item.className = 'nav-item' + (f.path === activePath ? ' active' : '');
-        item.textContent = f.filename;
+        // 用真实标题，回退到 slug
+        item.textContent = f.title || f.filename;
         item.title = f.path;
         item.onclick = () => openArticle(f.path);
         nav.appendChild(item);

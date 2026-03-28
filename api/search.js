@@ -1,6 +1,20 @@
 // GET /api/search?q=关键词 - 全文搜索
 import { listAllFiles, getFile, ok, err, unauthorized, checkAuth } from './_github.js';
 
+/** 从 Markdown 内容中提取第一个 # 标题 */
+function extractTitle(content) {
+  for (const line of content.split('\n').slice(0, 20)) {
+    const m = line.match(/^#\s+(.+)/);
+    if (m) return m[1].trim();
+  }
+  return null;
+}
+
+/** slug → 可读名 */
+function slugToLabel(slug) {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -27,10 +41,12 @@ export default async function handler(req, res) {
         if (!r || !r.content) continue;
         const content = r.content.toLowerCase();
         const relPath = f.path.replace('docs/', '');
-        const filename = relPath.split('/').pop().replace('.md', '');
+        const slug = relPath.split('/').pop().replace('.md', '');
+        const mdTitle = extractTitle(r.content);
+        const displayTitle = mdTitle || slugToLabel(slug);
 
-        // 标题匹配权重更高
-        const inTitle = filename.toLowerCase().includes(q);
+        // 同时在标题和内容中搜索
+        const inTitle = (mdTitle || '').toLowerCase().includes(q) || slug.toLowerCase().includes(q);
         const inContent = content.includes(q);
         if (!inTitle && !inContent) continue;
 
@@ -45,7 +61,8 @@ export default async function handler(req, res) {
 
         results.push({
           path: relPath,
-          filename,
+          filename: slug,
+          title: displayTitle,   // ← 新增真实标题
           inTitle,
           context: context + (contextEnd < r.content.length ? '…' : ''),
           size: f.size,
