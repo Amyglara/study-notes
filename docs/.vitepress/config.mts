@@ -22,6 +22,7 @@ export default defineConfig({
       { text: 'DeFi进阶', link: '/defi/' },
       { text: '交易策略', link: '/trading/' },
       { text: '工具箱', link: '/tools/' },
+      { text: '📕 红宝书', link: '/redbook/' },
       { text: '麒麟会情报', link: 'https://zx.bitdong.xyz', target: '_blank' },
     ],
 
@@ -68,6 +69,55 @@ export default defineConfig({
             { text: '行情监控', link: '/tools/monitor' },
           ]
         }
+      ],
+      '/redbook/': [
+        {
+          text: '📕 区块链红宝书',
+          items: [
+            { text: '前言 & 目录', link: '/redbook/' },
+          ]
+        },
+        {
+          text: 'A - F',
+          items: [
+            { text: 'A：A16Z / AAVE / AMM…', link: '/redbook/a' },
+            { text: 'B：BTC / BSC / 爆仓…', link: '/redbook/b' },
+            { text: 'C：CEX / 仓位 / CZ…', link: '/redbook/c' },
+            { text: 'D：DeFi / DAO / 地板价…', link: '/redbook/d' },
+            { text: 'E：EVM / ERC-20 / ETF…', link: '/redbook/e' },
+            { text: 'F：FOMO / FUD / 分叉…', link: '/redbook/f' },
+          ]
+        },
+        {
+          text: 'G - M',
+          items: [
+            { text: 'G：Gas / GameFi / 公链…', link: '/redbook/g' },
+            { text: 'H：哈希 / HODL / 合约…', link: '/redbook/h' },
+            { text: 'I：ICO / IDO / IPFS…', link: '/redbook/i' },
+            { text: 'J：韭菜 / 节点 / 机枪池…', link: '/redbook/j' },
+            { text: 'K：KYC / 空投 / 跨链桥…', link: '/redbook/k' },
+            { text: 'L：Layer2 / 流动性 / 冷钱包…', link: '/redbook/l' },
+            { text: 'M：Mint / MetaMask / MEME…', link: '/redbook/m' },
+          ]
+        },
+        {
+          text: 'N - Z',
+          items: [
+            { text: 'N：NFT / 匿名币', link: '/redbook/n' },
+            { text: 'O：OTC / OG / 欧易', link: '/redbook/o' },
+            { text: 'P：PoW / PoS / 私钥…', link: '/redbook/p' },
+            { text: 'Q：去中心化 / 区块 / 清算…', link: '/redbook/q' },
+            { text: 'R：ROI / Rug Pull / 软分叉…', link: '/redbook/r' },
+            { text: 'S：Staking / 私钥 / 梭哈…', link: '/redbook/s' },
+            { text: 'T：TVL / Token / 土狗…', link: '/redbook/t' },
+            { text: 'U：USDT / Uniswap', link: '/redbook/u' },
+            { text: 'V：Volume / V神', link: '/redbook/v' },
+            { text: 'W：Web3 / Whale / 稳定币…', link: '/redbook/w' },
+            { text: 'X：洗盘 / 现货 / 限价单', link: '/redbook/x' },
+            { text: 'Y：预言机 / 以太坊 / 硬分叉…', link: '/redbook/y' },
+            { text: 'Z：智能合约 / 助记词 / 做多…', link: '/redbook/z' },
+          ]
+        },
       ],
     },
 
