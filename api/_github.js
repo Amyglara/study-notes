@@ -8,6 +8,35 @@ function getToken() {
   return process.env.GITHUB_TOKEN;
 }
 
+/** base64 → utf-8 字符串，兼容 Node.js 和 Edge Runtime */
+function b64decode(str) {
+  // 去掉 GitHub API 返回中的换行符
+  const clean = str.replace(/\n/g, '');
+  if (typeof Buffer !== 'undefined') {
+    // Node.js Serverless Runtime
+    return Buffer.from(clean, 'base64').toString('utf-8');
+  }
+  // Edge Runtime / 浏览器
+  return decodeURIComponent(
+    atob(clean)
+      .split('')
+      .map(c => '%' + c.charCodeAt(0).toString(16).padStart(2, '0'))
+      .join('')
+  );
+}
+
+/** utf-8 字符串 → base64，兼容 Node.js 和 Edge Runtime */
+function b64encode(str) {
+  if (typeof Buffer !== 'undefined') {
+    return Buffer.from(str, 'utf-8').toString('base64');
+  }
+  return btoa(
+    encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) =>
+      String.fromCharCode(parseInt(p1, 16))
+    )
+  );
+}
+
 async function ghFetch(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
     ...options,
@@ -27,7 +56,7 @@ async function ghFetch(path, options = {}) {
 export async function getFile(filePath) {
   try {
     const data = await ghFetch(`/repos/${OWNER}/${REPO}/contents/${filePath}?ref=${BRANCH}`);
-    const content = Buffer.from(data.content, 'base64').toString('utf-8');
+    const content = b64decode(data.content);
     return { content, sha: data.sha, exists: true };
   } catch (e) {
     if (e.message.includes('Not Found') || e.message.includes('404')) {
@@ -41,7 +70,7 @@ export async function getFile(filePath) {
 export async function putFile(filePath, content, message, sha = null) {
   const body = {
     message,
-    content: Buffer.from(content, 'utf-8').toString('base64'),
+    content: b64encode(content),
     branch: BRANCH,
   };
   if (sha) body.sha = sha;

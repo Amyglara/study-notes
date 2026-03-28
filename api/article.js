@@ -1,7 +1,7 @@
 // GET  /api/article?path=xxx  - 读取文章内容
 // POST /api/article           - 保存文章 {path, content, message}
 // DELETE /api/article?path=xxx&sha=xxx - 删除文章
-import { getFile, putFile, deleteFile, ok, err, unauthorized } from '../_github.js';
+import { getFile, putFile, deleteFile, ok, err, unauthorized } from './_github.js';
 
 function checkAuth(req) {
   const token = req.headers['x-admin-token'];
