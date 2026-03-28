@@ -39,7 +39,7 @@ export default defineConfig({
         items: [
           { text: '📕 区块链红宝书', link: '/redbook/' },
           { text: '📗 币圈投资指南', link: '/guide/' },
-          { text: '🌟 大宇知识库', link: '/dayu/' },
+          { text: '🌟 Bit东知识库', link: '/bitdong/' },
         ]
       },
       { text: '🦞 麒麟会情报', link: 'https://zx.bitdong.xyz', target: '_blank' },
@@ -138,59 +138,59 @@ export default defineConfig({
           ]
         },
       ],
-      '/dayu/': [
+      '/bitdong/': [
         {
-          text: '🌟 大宇知识库',
+          text: '🌟 Bit东知识库',
           items: [
-            { text: '知识库总览', link: '/dayu/' },
+            { text: '知识库总览', link: '/bitdong/' },
           ]
         },
         {
           text: '📋 入门教程',
           collapsed: false,
           items: [
-            { text: '投资导航', link: '/dayu/nav' },
-            { text: '第1步：交易所注册', link: '/dayu/step1' },
-            { text: '第2步：买币·钱包·链上', link: '/dayu/step2' },
-            { text: '第3步：十大神级工具', link: '/dayu/step3' },
-            { text: '第4步：链上土狗暴赚', link: '/dayu/step4' },
-            { text: '第5步：电报隐私设置', link: '/dayu/step5' },
-            { text: '从零到500万教程', link: '/dayu/500w' },
-            { text: '40%稳定币年化利息', link: '/dayu/stable40' },
-            { text: 'AI教程一文搞定', link: '/dayu/ai-guide' },
-            { text: '币安OKX管道收入', link: '/dayu/exchange-income' },
-            { text: '不冻卡出金&炒美股', link: '/dayu/withdraw' },
+            { text: '投资导航', link: '/bitdong/nav' },
+            { text: '第1步：交易所注册', link: '/bitdong/step1' },
+            { text: '第2步：买币·钱包·链上', link: '/bitdong/step2' },
+            { text: '第3步：十大神级工具', link: '/bitdong/step3' },
+            { text: '第4步：链上土狗暴赚', link: '/bitdong/step4' },
+            { text: '第5步：电报隐私设置', link: '/bitdong/step5' },
+            { text: '从零到500万教程', link: '/bitdong/500w' },
+            { text: '40%稳定币年化利息', link: '/bitdong/stable40' },
+            { text: 'AI教程一文搞定', link: '/bitdong/ai-guide' },
+            { text: '币安OKX管道收入', link: '/bitdong/exchange-income' },
+            { text: '不冻卡出金&炒美股', link: '/bitdong/withdraw' },
           ]
         },
         {
           text: '✍️ Bit东原创',
           collapsed: false,
           items: [
-            { text: '原创合集', link: '/dayu/original/' },
-            { text: '序言：正道', link: '/dayu/original/preface' },
-            { text: 'MEME币观点集锦', link: '/dayu/original/meme' },
+            { text: '原创合集', link: '/bitdong/original/' },
+            { text: '序言：正道', link: '/bitdong/original/preface' },
+            { text: 'MEME币观点集锦', link: '/bitdong/original/meme' },
           ]
         },
         {
           text: '💡 投资智慧',
           collapsed: true,
           items: [
-            { text: '佚名精选观点', link: '/dayu/wisdom/anonymous' },
+            { text: '佚名精选观点', link: '/bitdong/wisdom/anonymous' },
           ]
         },
         {
           text: '📚 投资经典',
           collapsed: true,
           items: [
-            { text: '好书推荐', link: '/dayu/classics/books' },
+            { text: '好书推荐', link: '/bitdong/classics/books' },
           ]
         },
         {
           text: '🔍 专项研究',
           collapsed: true,
           items: [
-            { text: '交易秘诀', link: '/dayu/trading-secrets/' },
-            { text: '🔒 精通 Zcash', link: '/dayu/projects/zcash' },
+            { text: '交易秘诀', link: '/bitdong/trading-secrets/' },
+            { text: '🔒 精通 Zcash', link: '/bitdong/projects/zcash' },
           ]
         },
       ],

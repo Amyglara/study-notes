@@ -74,7 +74,7 @@
     <section class="modules-section">
       <div class="modules-header">
         <h2 class="modules-title">选择学习方向</h2>
-        <p class="modules-sub">六大模块，系统构建你的 Web3 知识体系</p>
+        <p class="modules-sub">七大模块，系统构建你的 Web3 知识体系</p>
       </div>
       <div class="modules-grid">
         <a href="/web3-basics/" class="module-card">
@@ -151,6 +151,19 @@
             <div class="module-desc">从避险到躺赚，仓位管理 334 战法，7章带你穿越牛熊周期</div>
             <div class="module-meta">
               <span class="module-tag module-tag--hot">🔥 精华必读</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/bitdong/" class="module-card module-card--featured">
+          <div class="module-icon-wrap">
+            <span class="module-icon">🌟</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">Bit东知识库</div>
+            <div class="module-desc">实战入门5步走、从零到500万教程、Bit东原创、精通 Zcash 等深度内容</div>
+            <div class="module-meta">
+              <span class="module-tag module-tag--hot">🔥 实战干货</span>
               <span class="module-arrow">→</span>
             </div>
           </div>
