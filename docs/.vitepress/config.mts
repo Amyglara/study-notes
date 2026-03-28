@@ -164,9 +164,6 @@ export default defineConfig({
       ],
     },
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/Bitdong798' },
-    ],
 
     footer: {
       message: '知识改变命运，学习创造财富',

@@ -749,6 +749,18 @@ div[class*='language-'] {
   }
 }
 
+/* ===== 隐藏不需要的导航元素 ===== */
+/* Appearance 切换按钮 */
+.VPNavBarAppearance,
+.VPNavScreenAppearance {
+  display: none !important;
+}
+/* GitHub 社交链接 */
+.VPNavBarSocialLinks,
+.VPNavScreenSocialLinks {
+  display: none !important;
+}
+
 /* ===== Home 页特殊优化 ===== */
 .VPHomeHero .main {
   position: relative;
