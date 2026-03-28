@@ -1,5 +1,3 @@
 ---
-layout: false
+layout: home
 ---
-
-<HomeHero />

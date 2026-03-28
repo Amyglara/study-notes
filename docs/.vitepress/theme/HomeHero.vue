@@ -485,70 +485,181 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ===== 响应式 ===== */
+/* ===== 响应式：平板 ===== */
 @media (max-width: 960px) {
   .hero-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 56px;
-    padding: 80px 32px 60px;
+    gap: 40px;
+    padding: 64px 32px 56px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-name,
   .hero-text {
-    font-size: 2.8rem;
-    letter-spacing: -1.2px;
+    font-size: 2.6rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem;
   }
 
   .hero-actions {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .hero-stats {
     justify-content: center;
   }
+}
+
+/* ===== 响应式：手机 ===== */
+@media (max-width: 640px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    padding: 48px 20px 48px;
+  }
 
   .hero-content {
     max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section {
-    padding: 60px 20px 48px;
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .hero-name,
-  .hero-text {
-    font-size: 2.2rem;
-    letter-spacing: -0.8px;
+  /* 书本缩小：手机上完整可见 */
+  .book-scene {
+    perspective: 900px;
   }
 
   .book {
-    width: 180px;
-    height: 245px;
+    width: 160px;
+    height: 220px;
+    transform: rotateY(-20deg) rotateX(3deg);
+    animation:
+      bookEntrance 1s cubic-bezier(0.22, 1, 0.36, 1) both,
+      bookFloatMobile 6s ease-in-out 1.2s infinite;
+  }
+
+  .book:hover {
+    transform: rotateY(-10deg) rotateX(2deg) translateY(-6px);
   }
 
   .book-front {
-    width: 180px;
-    height: 245px;
+    width: 160px;
+    height: 220px;
+    transform: translateZ(14px);
   }
 
-  .book-spine,
+  .book-spine {
+    width: 28px;
+    height: 220px;
+    transform: rotateY(-90deg) translateX(-14px);
+  }
+
   .book-pages {
-    height: 245px;
+    width: 28px;
+    height: 216px;
+    transform: rotateY(90deg) translateX(14px);
   }
 
+  /* 标题 */
+  .hero-name,
+  .hero-text {
+    font-size: 2rem;
+    letter-spacing: -0.6px;
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .hero-badge {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+
+  /* 按钮：手机全宽竖排 */
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
+    margin-bottom: 28px;
   }
 
   .btn {
     width: 100%;
-    justify-content: center;
+    height: 52px;
+    font-size: 1rem;
+    border-radius: 14px;
   }
+
+  /* 统计数字缩小 */
+  .hero-stats {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .stat-num {
+    font-size: 1.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+  }
+
+  .stat-divider {
+    height: 24px;
+  }
+}
+
+/* ===== 响应式：小屏手机 ===== */
+@media (max-width: 375px) {
+  .hero-section {
+    padding: 40px 16px 40px;
+    gap: 28px;
+  }
+
+  .book {
+    width: 140px;
+    height: 192px;
+  }
+
+  .book-front {
+    width: 140px;
+    height: 192px;
+  }
+
+  .book-spine,
+  .book-pages {
+    height: 192px;
+  }
+
+  .hero-name,
+  .hero-text {
+    font-size: 1.75rem;
+    letter-spacing: -0.4px;
+  }
+}
+
+@keyframes bookFloatMobile {
+  0%, 100% { transform: rotateY(-20deg) rotateX(3deg) translateY(0px); }
+  50%       { transform: rotateY(-20deg) rotateX(3deg) translateY(-8px); }
 }
 </style>
