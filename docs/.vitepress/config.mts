@@ -5,7 +5,7 @@ export default defineConfig({
   description: '系统学习Web3、DeFi、链上交易的知识库',
   lang: 'zh-CN',
 
-  appearance: false,
+  appearance: 'force-dark',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
