@@ -69,6 +69,94 @@
         </div>
       </div>
     </section>
+
+    <!-- 矩阵式学习菜单 -->
+    <section class="modules-section">
+      <div class="modules-header">
+        <h2 class="modules-title">选择学习方向</h2>
+        <p class="modules-sub">六大模块，系统构建你的 Web3 知识体系</p>
+      </div>
+      <div class="modules-grid">
+        <a href="/web3-basics/" class="module-card">
+          <div class="module-icon-wrap">
+            <span class="module-icon">🧱</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">Web3 基础</div>
+            <div class="module-desc">区块链原理、钱包安全、主流公链对比，从底层逻辑理解 Web3</div>
+            <div class="module-meta">
+              <span class="module-tag">入门必读</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/defi/" class="module-card">
+          <div class="module-icon-wrap">
+            <span class="module-icon">💧</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">DeFi 进阶</div>
+            <div class="module-desc">DEX、AMM、流动性挖矿、借贷协议深度解析，搞懂 TVL/APY</div>
+            <div class="module-meta">
+              <span class="module-tag">进阶研究</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/trading/" class="module-card">
+          <div class="module-icon-wrap">
+            <span class="module-icon">📈</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">交易策略</div>
+            <div class="module-desc">RSI+MACD+EMA 共振、仓位管理、三档止盈止损体系</div>
+            <div class="module-meta">
+              <span class="module-tag">实战方法论</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/tools/" class="module-card">
+          <div class="module-icon-wrap">
+            <span class="module-icon">🛠️</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">工具箱</div>
+            <div class="module-desc">链上数据、行情监控、聪明钱追踪、安全工具，精选 20+ 神器</div>
+            <div class="module-meta">
+              <span class="module-tag">效率工具</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/redbook/" class="module-card module-card--featured">
+          <div class="module-icon-wrap">
+            <span class="module-icon">📕</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">区块链红宝书</div>
+            <div class="module-desc">300+ 币圈术语 A-Z 全解析，AMM/DeFi/NFT/HODL 每词讲透</div>
+            <div class="module-meta">
+              <span class="module-tag module-tag--hot">🔥 最全词典</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="/guide/" class="module-card module-card--featured">
+          <div class="module-icon-wrap">
+            <span class="module-icon">📗</span>
+          </div>
+          <div class="module-body">
+            <div class="module-title">币圈投资指南</div>
+            <div class="module-desc">从避险到躺赚，仓位管理 334 战法，7章带你穿越牛熊周期</div>
+            <div class="module-meta">
+              <span class="module-tag module-tag--hot">🔥 精华必读</span>
+              <span class="module-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -661,5 +749,329 @@
 @keyframes bookFloatMobile {
   0%, 100% { transform: rotateY(-20deg) rotateX(3deg) translateY(0px); }
   50%       { transform: rotateY(-20deg) rotateX(3deg) translateY(-8px); }
+}
+
+/* ===== 矩阵式学习菜单 ===== */
+.modules-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px 100px;
+}
+
+.modules-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.modules-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  padding: 0;
+  border: none;
+  /* 暗色默认 */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.modules-sub {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+/* 3列网格 */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* 单个模块卡片（暗色默认）*/
+.module-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 28px 24px 24px;
+  background: linear-gradient(145deg, rgba(17, 17, 26, 0.75) 0%, rgba(12, 12, 18, 0.88) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.13);
+  border-radius: 20px;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+/* 顶部彩虹光边 */
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.7) 30%,
+    rgba(192, 132, 252, 0.9) 50%,
+    rgba(139, 92, 246, 0.7) 70%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.module-card:hover {
+  border-color: rgba(139, 92, 246, 0.38) !important;
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(139, 92, 246, 0.12);
+  text-decoration: none !important;
+}
+
+.module-card:hover::before {
+  opacity: 1;
+}
+
+/* 精选卡片略有区分 */
+.module-card--featured {
+  border-color: rgba(139, 92, 246, 0.2);
+  background: linear-gradient(145deg, rgba(20, 14, 35, 0.8) 0%, rgba(14, 10, 26, 0.9) 100%);
+}
+
+.module-icon-wrap {
+  margin-bottom: 14px;
+}
+
+.module-icon {
+  font-size: 2rem;
+  line-height: 1;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.25));
+}
+
+.module-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.module-desc {
+  font-size: 0.845rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.45);
+  flex: 1;
+}
+
+.module-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.module-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  color: #a78bfa;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.module-tag--hot {
+  background: rgba(236, 72, 153, 0.1);
+  border-color: rgba(236, 72, 153, 0.25);
+  color: #f472b6;
+}
+
+.module-arrow {
+  font-size: 1rem;
+  color: rgba(139, 92, 246, 0.5);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.module-card:hover .module-arrow {
+  transform: translateX(4px);
+  color: #a78bfa;
+}
+
+/* ===== 亮色模式：Hero 区域适配 ===== */
+:global(:root:not(.dark)) .hero-glow {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(124, 58, 237, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 30% at 70% 40%, rgba(139, 92, 246, 0.04) 0%, transparent 55%);
+}
+
+:global(:root:not(.dark)) .hero-badge {
+  background: rgba(109, 40, 217, 0.07);
+  border-color: rgba(109, 40, 217, 0.18);
+  color: #5b21b6;
+}
+
+:global(:root:not(.dark)) .gradient-text {
+  background: linear-gradient(135deg,
+    #4c1d95 0%,
+    #5b21b6 25%,
+    #6d28d9 55%,
+    #7c3aed 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none;
+}
+
+:global(:root:not(.dark)) .hero-text {
+  color: #1a1523 !important;
+}
+
+:global(:root:not(.dark)) .hero-tagline {
+  color: rgba(50, 30, 80, 0.55);
+}
+
+:global(:root:not(.dark)) .btn-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  box-shadow:
+    0 0 0 1px rgba(109, 40, 217, 0.3),
+    0 4px 16px rgba(109, 40, 217, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+:global(:root:not(.dark)) .btn-primary:hover {
+  box-shadow:
+    0 0 0 1px rgba(109, 40, 217, 0.5),
+    0 8px 24px rgba(109, 40, 217, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+:global(:root:not(.dark)) .btn-secondary {
+  background: rgba(109, 40, 217, 0.07);
+  color: #5b21b6;
+  border-color: rgba(109, 40, 217, 0.25);
+}
+:global(:root:not(.dark)) .btn-secondary:hover {
+  background: rgba(109, 40, 217, 0.12);
+  border-color: rgba(109, 40, 217, 0.45);
+  color: #4c1d95;
+}
+
+:global(:root:not(.dark)) .stat-num {
+  color: #6d28d9;
+}
+:global(:root:not(.dark)) .stat-label {
+  color: rgba(50, 30, 80, 0.45);
+}
+:global(:root:not(.dark)) .stat-divider {
+  background: rgba(109, 40, 217, 0.12);
+}
+
+/* 亮色书本封面顶部文字 */
+:global(:root:not(.dark)) .book-title-top {
+  color: rgba(196, 181, 253, 0.9);
+}
+
+/* ===== 亮色模式：矩阵菜单适配 ===== */
+:global(:root:not(.dark)) .modules-title {
+  color: #1a1523;
+}
+:global(:root:not(.dark)) .modules-sub {
+  color: #7a7090;
+}
+
+:global(:root:not(.dark)) .module-card {
+  background: #ffffff;
+  border-color: rgba(139, 92, 246, 0.12);
+  box-shadow: 0 2px 8px rgba(100, 60, 180, 0.05);
+  backdrop-filter: none;
+}
+:global(:root:not(.dark)) .module-card--featured {
+  background: linear-gradient(145deg, #faf8ff 0%, #f5f0ff 100%);
+  border-color: rgba(139, 92, 246, 0.18);
+}
+:global(:root:not(.dark)) .module-card:hover {
+  border-color: rgba(139, 92, 246, 0.35) !important;
+  box-shadow:
+    0 16px 40px rgba(100, 60, 180, 0.12),
+    0 0 0 1px rgba(139, 92, 246, 0.1);
+}
+
+:global(:root:not(.dark)) .module-title {
+  color: #1a1523;
+}
+:global(:root:not(.dark)) .module-desc {
+  color: #5a5070;
+}
+:global(:root:not(.dark)) .module-tag {
+  background: rgba(109, 40, 217, 0.07);
+  border-color: rgba(109, 40, 217, 0.18);
+  color: #5b21b6;
+}
+:global(:root:not(.dark)) .module-tag--hot {
+  background: rgba(219, 39, 119, 0.07);
+  border-color: rgba(219, 39, 119, 0.2);
+  color: #be185d;
+}
+:global(:root:not(.dark)) .module-arrow {
+  color: rgba(109, 40, 217, 0.4);
+}
+:global(:root:not(.dark)) .module-card:hover .module-arrow {
+  color: #6d28d9;
+}
+
+/* ===== 响应式：矩阵菜单 ===== */
+@media (max-width: 960px) {
+  .modules-section {
+    padding: 0 32px 72px;
+  }
+  .modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .modules-section {
+    padding: 0 20px 56px;
+  }
+  .modules-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .module-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
+  .module-icon-wrap {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .module-icon {
+    font-size: 1.6rem;
+  }
+  .modules-title {
+    font-size: 1.4rem;
+  }
 }
 </style>
