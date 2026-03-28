@@ -2,35 +2,36 @@
 layout: home
 
 hero:
-  name: "跟着Bit东"
+  name: "跟着 Bit东"
   text: "学习 Web3"
-  tagline: 从零开始，系统掌握 Web3、DeFi 与链上交易
-  image:
-    src: /hero-logo.svg
-    alt: Bit东
+  tagline: 系统化知识体系 · 实战交易方法论 · 每日情报推送
   actions:
     - theme: brand
       text: 开始学习 →
       link: /web3-basics/
     - theme: alt
-      text: 麒麟会情报中心
+      text: 🦞 麒麟会情报中心
       link: https://zx.bitdong.xyz
 
 features:
   - icon: 🧱
     title: Web3 基础
-    details: 区块链原理、钱包安全、公链对比，打好底层认知基础。
+    details: 区块链原理、钱包安全、主流公链对比。从底层逻辑理解 Web3，不做无知韭菜。
     link: /web3-basics/
+    linkText: 开始学习
   - icon: 💧
     title: DeFi 进阶
-    details: DEX、流动性挖矿、借贷协议，深入理解去中心化金融。
+    details: DEX、AMM、流动性挖矿、借贷协议深度解析。真正搞懂 TVL、APY 背后的运作机制。
     link: /defi/
+    linkText: 深入研究
   - icon: 📈
     title: 交易策略
-    details: 技术分析、RSI+MACD共振信号、仓位管理，实战导向。
+    details: RSI+MACD+EMA 三指标共振、仓位管理、止损止盈体系。每条信号附止损位和三档止盈目标。
     link: /trading/
+    linkText: 查看策略
   - icon: 🛠️
     title: 工具箱
-    details: 链上数据工具、行情监控、信息源整理，效率翻倍。
+    details: 链上数据、行情监控、聪明钱追踪、安全工具。精选 20+ 工具，效率翻倍。
     link: /tools/
+    linkText: 查看工具
 ---
