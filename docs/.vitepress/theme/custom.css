@@ -54,15 +54,24 @@
     linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 /* ===== 导航栏 ===== */
 .dark .VPNav {
-  background: rgba(7, 7, 10, 0.75) !important;
+  background: rgba(7, 7, 10, 0.85) !important;
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(139, 92, 246, 0.1) !important;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 4px 32px rgba(0, 0, 0, 0.2);
+  z-index: 100 !important;
+  position: relative !important;
+}
+
+/* 导航下拉菜单层级修复 */
+.VPNav .VPFlyout,
+.VPNav .VPNavBarMenuGroup {
+  z-index: 200 !important;
+  position: relative !important;
 }
 
 .VPNavBarTitle .title {
@@ -750,48 +759,32 @@
   position: relative;
 }
 
-.VPHero .image-container::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #8b5cf6, #e879f9, #38bdf8, #8b5cf6);
-  background-size: 300% 300%;
-  animation: borderRotate 4s linear infinite;
-  z-index: -1;
-  opacity: 0.7;
-}
-
-@keyframes borderRotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .VPHero .image-bg {
-  border-radius: 50% !important;
+  border-radius: 24px !important;
   background: transparent !important;
 }
 
 .VPHero .image-src {
-  border-radius: 50% !important;
-  width: 280px !important;
-  height: 280px !important;
+  border-radius: 24px !important;
+  width: 260px !important;
+  height: 320px !important;
   object-fit: cover !important;
-  object-position: center top !important;
+  object-position: center 15% !important;
   box-shadow:
-    0 0 0 3px rgba(139, 92, 246, 0.4),
-    0 0 40px rgba(139, 92, 246, 0.25),
-    0 20px 60px rgba(0, 0, 0, 0.5) !important;
+    0 0 0 1px rgba(139, 92, 246, 0.2),
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(124, 58, 237, 0.12) !important;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s !important;
+  filter: brightness(0.95) contrast(1.05);
 }
 
 .VPHero .image-src:hover {
-  transform: scale(1.03) !important;
+  transform: translateY(-4px) !important;
   box-shadow:
-    0 0 0 3px rgba(192, 132, 252, 0.6),
-    0 0 60px rgba(139, 92, 246, 0.4),
-    0 24px 70px rgba(0, 0, 0, 0.6) !important;
+    0 0 0 1px rgba(139, 92, 246, 0.35),
+    0 40px 90px rgba(0, 0, 0, 0.65),
+    0 0 80px rgba(124, 58, 237, 0.18) !important;
+  filter: brightness(1) contrast(1.05);
 }
 
 /* ===== 强调文字 ===== */
