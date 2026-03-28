@@ -173,16 +173,38 @@ export default defineConfig({
         },
         {
           text: '💡 投资智慧',
-          collapsed: true,
+          collapsed: false,
           items: [
-            { text: '佚名精选观点', link: '/bitdong/wisdom/anonymous' },
+            { text: '智慧总览', link: '/bitdong/wisdom/' },
+            { text: '🏦 投资大师', link: '/bitdong/wisdom/masters' },
+            { text: '  ├ 巴菲特', link: '/bitdong/wisdom/buffett' },
+            { text: '  ├ 段永平', link: '/bitdong/wisdom/duan-yongping' },
+            { text: '  ├ 彼得·蒂尔', link: '/bitdong/wisdom/peter-thiel' },
+            { text: '  └ 麦刚', link: '/bitdong/wisdom/maigang' },
+            { text: '🥷 跨界大神', items: [
+              { text: '黄铮：把资本主义倒过来', link: '/bitdong/wisdom/huang-zheng' },
+            ]},
+            { text: '💪 民间高手', items: [
+              { text: 'GCR的30条交易心得', link: '/bitdong/wisdom/gcr-30-tips' },
+              { text: '王川：投资智慧精华', link: '/bitdong/wisdom/wang-chuan' },
+              { text: '神鱼：分层投资策略', link: '/bitdong/wisdom/shenyu-strategy' },
+            ]},
+            { text: '🎤 各界名人', items: [
+              { text: 'CZ的原则', link: '/bitdong/wisdom/cz-principles' },
+            ]},
+            { text: '🌱 成长好文', items: [
+              { text: '掌控多巴胺', link: '/bitdong/wisdom/control-dopamine' },
+            ]},
+            { text: '🎭 佚名精选观点', link: '/bitdong/wisdom/anonymous' },
           ]
         },
         {
           text: '📚 投资经典',
-          collapsed: true,
+          collapsed: false,
           items: [
-            { text: '好书推荐', link: '/bitdong/classics/books' },
+            { text: '经典总览', link: '/bitdong/classics/' },
+            { text: '📖 好书推荐', link: '/bitdong/classics/books' },
+            { text: '🔵 价值投资与加密货币', link: '/bitdong/classics/value-investing' },
           ]
         },
         {
