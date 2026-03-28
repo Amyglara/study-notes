@@ -169,6 +169,8 @@ export default defineConfig({
             { text: '原创合集', link: '/bitdong/original/' },
             { text: '序言：正道', link: '/bitdong/original/preface' },
             { text: 'MEME币观点集锦', link: '/bitdong/original/meme' },
+            { text: '观点合集：流动性与噪音', link: '/bitdong/original/views-collection' },
+            { text: '进化思考：13个思维模型', link: '/bitdong/original/evolution-thinking' },
           ]
         },
         {
@@ -176,26 +178,59 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '智慧总览', link: '/bitdong/wisdom/' },
-            { text: '🏦 投资大师', link: '/bitdong/wisdom/masters' },
-            { text: '  ├ 巴菲特', link: '/bitdong/wisdom/buffett' },
-            { text: '  ├ 段永平', link: '/bitdong/wisdom/duan-yongping' },
-            { text: '  ├ 彼得·蒂尔', link: '/bitdong/wisdom/peter-thiel' },
-            { text: '  └ 麦刚', link: '/bitdong/wisdom/maigang' },
-            { text: '🥷 跨界大神', items: [
-              { text: '黄铮：把资本主义倒过来', link: '/bitdong/wisdom/huang-zheng' },
-            ]},
-            { text: '💪 民间高手', items: [
-              { text: 'GCR的30条交易心得', link: '/bitdong/wisdom/gcr-30-tips' },
-              { text: '王川：投资智慧精华', link: '/bitdong/wisdom/wang-chuan' },
-              { text: '神鱼：分层投资策略', link: '/bitdong/wisdom/shenyu-strategy' },
-            ]},
-            { text: '🎤 各界名人', items: [
-              { text: 'CZ的原则', link: '/bitdong/wisdom/cz-principles' },
-            ]},
-            { text: '🌱 成长好文', items: [
-              { text: '掌控多巴胺', link: '/bitdong/wisdom/control-dopamine' },
-            ]},
-            { text: '🎭 佚名精选观点', link: '/bitdong/wisdom/anonymous' },
+          ]
+        },
+        {
+          text: '🏦 投资大师',
+          collapsed: false,
+          items: [
+            { text: '大师索引', link: '/bitdong/wisdom/masters' },
+            { text: '巴菲特：价值投资哲学', link: '/bitdong/wisdom/buffett' },
+            { text: '段永平：逻辑100条', link: '/bitdong/wisdom/duan-yongping' },
+            { text: '彼得·蒂尔：反直觉哲学', link: '/bitdong/wisdom/peter-thiel' },
+            { text: '麦刚：比特币布道者', link: '/bitdong/wisdom/maigang' },
+          ]
+        },
+        {
+          text: '🥷 跨界大神',
+          collapsed: false,
+          items: [
+            { text: '杨振宁：直觉与人生智慧', link: '/bitdong/wisdom/yang-zhenning' },
+            { text: '黄铮：把资本主义倒过来', link: '/bitdong/wisdom/huang-zheng' },
+          ]
+        },
+        {
+          text: '💪 民间高手',
+          collapsed: false,
+          items: [
+            { text: 'GCR的30条交易心得', link: '/bitdong/wisdom/gcr-30-tips' },
+            { text: '王川：投资智慧精华', link: '/bitdong/wisdom/wang-chuan' },
+            { text: '神鱼：分层投资策略', link: '/bitdong/wisdom/shenyu-strategy' },
+            { text: '四海：信仰与基础概率', link: '/bitdong/wisdom/si-hai' },
+            { text: 'ZTZZBTC：币圈十戒', link: '/bitdong/wisdom/ztzzbtc' },
+            { text: 'Paulwei：注意力经济', link: '/bitdong/wisdom/paulwei' },
+          ]
+        },
+        {
+          text: '🎤 各界名人',
+          collapsed: false,
+          items: [
+            { text: 'CZ的原则', link: '/bitdong/wisdom/cz-principles' },
+            { text: '何一：打造基业长青的系统', link: '/bitdong/wisdom/he-yi' },
+          ]
+        },
+        {
+          text: '🌱 成长好文',
+          collapsed: false,
+          items: [
+            { text: '掌控多巴胺', link: '/bitdong/wisdom/control-dopamine' },
+          ]
+        },
+        {
+          text: '🎭 佚名精选',
+          collapsed: true,
+          items: [
+            { text: '佚名精选观点', link: '/bitdong/wisdom/anonymous' },
           ]
         },
         {
@@ -205,6 +240,25 @@ export default defineConfig({
             { text: '经典总览', link: '/bitdong/classics/' },
             { text: '📖 好书推荐', link: '/bitdong/classics/books' },
             { text: '🔵 价值投资与加密货币', link: '/bitdong/classics/value-investing' },
+          ]
+        },
+        {
+          text: '📐 经典理论',
+          collapsed: false,
+          items: [
+            { text: '全球18位最伟大投资家', link: '/bitdong/classics/18-investors' },
+            { text: '如何逃顶和抄底·霍华德马克斯', link: '/bitdong/classics/howard-marks' },
+          ]
+        },
+        {
+          text: '🧠 超级思维',
+          collapsed: false,
+          items: [
+            { text: '彼得·蒂尔：投资帝国与反直觉', link: '/bitdong/wisdom/peter-thiel' },
+            { text: '神鱼：从1000到10亿美元建议', link: '/bitdong/wisdom/shenyu-strategy' },
+            { text: '为什么马斯克总能打败对手', link: '/bitdong/classics/why-musk-wins' },
+            { text: '价值投资在加密货币复现', link: '/bitdong/classics/value-investing' },
+            { text: '顶流公链估值模型', link: '/bitdong/classics/blockchain-valuation' },
           ]
         },
         {
