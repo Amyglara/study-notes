@@ -58,21 +58,13 @@
 }
 
 /* ===== 导航栏 ===== */
+/* 注意：不能在 .VPNav 上用 backdrop-filter，否则会创建新层叠上下文，导致 Flyout 弹层失效 */
 .dark .VPNav {
-  background: rgba(7, 7, 10, 0.85) !important;
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(7, 7, 10, 0.92) !important;
   border-bottom: 1px solid rgba(139, 92, 246, 0.1) !important;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 4px 32px rgba(0, 0, 0, 0.2);
-  z-index: 100 !important;
-  position: relative !important;
 }
 
-/* 导航下拉菜单层级修复 */
-.VPNav .VPFlyout,
-.VPNav .VPNavBarMenuGroup {
-  z-index: 200 !important;
-  position: relative !important;
-}
 
 .VPNavBarTitle .title {
   font-weight: 700 !important;
@@ -744,8 +736,9 @@
 }
 
 /* ===== 亮色模式兜底（保持可读）===== */
+/* 不用 backdrop-filter，避免破坏 Flyout 层叠上下文 */
 .VPNav {
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 /* ===== Home 页特殊优化 ===== */
@@ -765,26 +758,17 @@
 }
 
 .VPHero .image-src {
-  border-radius: 24px !important;
+  border-radius: 20px !important;
   width: 260px !important;
   height: 320px !important;
   object-fit: cover !important;
   object-position: center 15% !important;
   box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.2),
-    0 30px 80px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(124, 58, 237, 0.12) !important;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s !important;
+    0 0 0 1px rgba(139, 92, 246, 0.18),
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(124, 58, 237, 0.1) !important;
   filter: brightness(0.95) contrast(1.05);
-}
-
-.VPHero .image-src:hover {
-  transform: translateY(-4px) !important;
-  box-shadow:
-    0 0 0 1px rgba(139, 92, 246, 0.35),
-    0 40px 90px rgba(0, 0, 0, 0.65),
-    0 0 80px rgba(124, 58, 237, 0.18) !important;
-  filter: brightness(1) contrast(1.05);
+  /* 无 hover 交互，静态展示 */
 }
 
 /* ===== 强调文字 ===== */
