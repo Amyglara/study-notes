@@ -726,14 +726,56 @@ const CAT_NAMES = {
 };
 
 async function loadArticles() {
-  document.getElementById('list-body').innerHTML = '<div class="loading-text">📖 正在加载文章列表并解析标题，请稍候…</div>';
+  document.getElementById('list-body').innerHTML = '<div class="loading-text">加载文章列表…</div>';
   try {
     const d = await api('/api/articles');
     if (d.error) throw new Error(d.error);
     allArticles = [];
     renderArticleList(d.grouped);
+    // 渲染完成后，后台懒加载真实标题（不阻塞列表展示）
+    lazyLoadTitles(allArticles);
   } catch(e) {
     document.getElementById('list-body').innerHTML = `<div class="loading-text" style="color:var(--red)">加载失败：${e.message}</div>`;
+  }
+}
+
+/** 后台按批次读取文章内容提取 # 标题，更新卡片展示（不影响主流程） */
+async function lazyLoadTitles(articles) {
+  const BATCH = 5; // 每批5篇，防止并发过多
+  for (let i = 0; i < articles.length; i += BATCH) {
+    const batch = articles.slice(i, i + BATCH);
+    await Promise.all(batch.map(async f => {
+      try {
+        const d = await api('/api/article?path=' + encodeURIComponent(f.path));
+        if (d.error || !d.content) return;
+        // 提取第一个 # 标题
+        let mdTitle = null;
+        for (const line of d.content.split('\n').slice(0, 20)) {
+          const m = line.match(/^#\s+(.+)/);
+          if (m) { mdTitle = m[1].trim(); break; }
+        }
+        if (!mdTitle) return;
+        // 更新内存中的数据
+        f.title = mdTitle;
+        f.mdTitle = mdTitle;
+        // 更新页面上的卡片标题（通过 path 找到对应 card）
+        const card = document.querySelector(`.a-card[data-path="${CSS.escape(f.path)}"]`);
+        if (card) {
+          const titleEl = card.querySelector('.a-title');
+          if (titleEl && titleEl.textContent !== mdTitle) {
+            titleEl.textContent = mdTitle;
+            titleEl.title = mdTitle;
+            card.dataset.title = mdTitle.toLowerCase();
+            // 移除「无标题」角标
+            card.querySelectorAll('.a-tag').forEach(t => {
+              if (t.textContent.includes('无标题')) t.remove();
+            });
+          }
+        }
+      } catch { /* 单篇失败不影响其他 */ }
+    }));
+    // 批次间短暂停顿，避免打爆 GitHub API
+    await new Promise(r => setTimeout(r, 200));
   }
 }
 
