@@ -142,8 +142,7 @@ export default defineConfig({
         {
           text: '🌟 大宇知识库',
           items: [
-            { text: '📋 导航与入门', link: '/dayu/' },
-            { text: '🆕 币圈新手入门', link: '/dayu/newbie' },
+            { text: '知识库总览', link: '/dayu/' },
           ]
         },
         {
@@ -168,11 +167,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '原创合集', link: '/dayu/original/' },
-            { text: '聪明的投资者（导读）', link: '/dayu/original/smart-investor' },
             { text: '序言：正道', link: '/dayu/original/preface' },
-            { text: '第一章：投资与投机', link: '/dayu/original/chapter1' },
-            { text: '第二章：投资者与通胀', link: '/dayu/original/chapter2' },
-            { text: '观点与长文合集', link: '/dayu/original/opinions' },
             { text: 'MEME币观点集锦', link: '/dayu/original/meme' },
           ]
         },
@@ -180,13 +175,6 @@ export default defineConfig({
           text: '💡 投资智慧',
           collapsed: true,
           items: [
-            { text: '投资智慧总览', link: '/dayu/wisdom/' },
-            { text: '投资大师语录', link: '/dayu/wisdom/masters' },
-            { text: '跨界大神洞见', link: '/dayu/wisdom/crossover' },
-            { text: '民间高手经验', link: '/dayu/wisdom/folk' },
-            { text: '各界名人财富观', link: '/dayu/wisdom/celebrities' },
-            { text: '基金洞见', link: '/dayu/wisdom/funds' },
-            { text: '成长好文', link: '/dayu/wisdom/growth' },
             { text: '佚名精选观点', link: '/dayu/wisdom/anonymous' },
           ]
         },
@@ -194,25 +182,14 @@ export default defineConfig({
           text: '📚 投资经典',
           collapsed: true,
           items: [
-            { text: '投资经典总览', link: '/dayu/classics/' },
-            { text: '₿ 屯比特币', link: '/dayu/classics/bitcoin-hodl' },
             { text: '好书推荐', link: '/dayu/classics/books' },
-            { text: '惊人回报案例', link: '/dayu/classics/returns' },
-            { text: '经典理论', link: '/dayu/classics/theory' },
-            { text: '超级思维模型', link: '/dayu/classics/mental-models' },
           ]
         },
         {
           text: '🔍 专项研究',
           collapsed: true,
           items: [
-            { text: '股市投资', link: '/dayu/stock/' },
-            { text: '播客精选', link: '/dayu/podcast/' },
-            { text: '交易秘诀总览', link: '/dayu/trading-secrets/' },
-            { text: '从零学交易（视频）', link: '/dayu/trading-secrets/video-trading' },
-            { text: '做空LUNA复盘', link: '/dayu/trading-secrets/short-luna' },
-            { text: '项目研究总览', link: '/dayu/projects/' },
-            { text: '☀️ Hyperliquid', link: '/dayu/projects/hyperliquid' },
+            { text: '交易秘诀', link: '/dayu/trading-secrets/' },
             { text: '🔒 精通 Zcash', link: '/dayu/projects/zcash' },
           ]
         },
