@@ -5,9 +5,6 @@ hero:
   name: "跟着 Bit东"
   text: "学习 Web3"
   tagline: 系统化知识体系 · 实战交易方法论 · 每日情报推送
-  image:
-    src: /logo.svg
-    alt: Bit东
   actions:
     - theme: brand
       text: 开始学习 →
