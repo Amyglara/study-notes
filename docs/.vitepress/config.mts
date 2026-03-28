@@ -20,7 +20,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '🦞',
+    logo: { src: '/avatar.jpg', width: 28, height: 28, style: 'border-radius: 50%' },
     siteTitle: '跟着Bit东学Web3',
 
     nav: [
