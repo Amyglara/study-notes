@@ -241,23 +241,24 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Hero 按钮 - 次按钮 */
+/* Hero 按钮 - 次按钮（与主按钮完全等高等字号）*/
 .dark .VPHero .VPButton.medium.alt {
   background: rgba(139, 92, 246, 0.08) !important;
-  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+  border: 1px solid rgba(139, 92, 246, 0.28) !important;
   color: #c4b5fd !important;
   border-radius: 12px !important;
   padding: 13px 32px !important;
   font-size: 0.975rem !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
   transition: all 0.25s !important;
-  backdrop-filter: blur(8px);
+  box-sizing: border-box !important;
 }
 
 .dark .VPHero .VPButton.medium.alt:hover {
   background: rgba(139, 92, 246, 0.14) !important;
-  border-color: rgba(139, 92, 246, 0.45) !important;
-  transform: translateY(-1px) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* ===== Features 卡片 ===== */
@@ -753,8 +754,32 @@
 }
 
 .VPHero .image-bg {
-  border-radius: 24px !important;
+  border-radius: 20px !important;
   background: transparent !important;
+}
+
+/* 入场动效：从小放大浮现 */
+@keyframes avatarEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(16px);
+    filter: brightness(0.8) contrast(1.05) blur(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: brightness(0.95) contrast(1.05) blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+    filter: brightness(0.95) contrast(1.05) blur(0px);
+  }
+}
+
+/* 持续轻浮动 */
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
 .VPHero .image-src {
@@ -768,7 +793,9 @@
     0 30px 80px rgba(0, 0, 0, 0.55),
     0 0 50px rgba(124, 58, 237, 0.1) !important;
   filter: brightness(0.95) contrast(1.05);
-  /* 无 hover 交互，静态展示 */
+  animation:
+    avatarEntrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
+    avatarFloat 5s ease-in-out 1s infinite;
 }
 
 /* ===== 强调文字 ===== */
