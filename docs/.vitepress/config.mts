@@ -5,11 +5,18 @@ export default defineConfig({
   description: '系统学习Web3、DeFi、链上交易的知识库',
   lang: 'zh-CN',
 
-  appearance: 'force-dark',
+  appearance: 'dark',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#7c3aed' }],
+    // 强制暗色：页面加载时立即写死 dark class，防止闪白
+    ['script', {}, `
+      (function() {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('vitepress-theme-appearance', 'dark');
+      })();
+    `],
   ],
 
   themeConfig: {
@@ -180,9 +187,6 @@ export default defineConfig({
       next: '下一篇'
     },
 
-    darkModeSwitchLabel: '主题',
-    lightModeSwitchTitle: '切换到亮色',
-    darkModeSwitchTitle: '切换到暗色',
     sidebarMenuLabel: '目录',
     returnToTopLabel: '回到顶部',
   },
