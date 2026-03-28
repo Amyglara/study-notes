@@ -18,13 +18,23 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Web3基础', link: '/web3-basics/' },
-      { text: 'DeFi进阶', link: '/defi/' },
-      { text: '交易策略', link: '/trading/' },
-      { text: '工具箱', link: '/tools/' },
-      { text: '📕 红宝书', link: '/redbook/' },
-      { text: '📗 投资指南', link: '/guide/' },
-      { text: '麒麟会情报', link: 'https://zx.bitdong.xyz', target: '_blank' },
+      {
+        text: '学习',
+        items: [
+          { text: '🧱 Web3 基础', link: '/web3-basics/' },
+          { text: '💧 DeFi 进阶', link: '/defi/' },
+          { text: '📈 交易策略', link: '/trading/' },
+          { text: '🛠️ 工具箱', link: '/tools/' },
+        ]
+      },
+      {
+        text: '知识库',
+        items: [
+          { text: '📕 区块链红宝书', link: '/redbook/' },
+          { text: '📗 币圈投资指南', link: '/guide/' },
+        ]
+      },
+      { text: '🦞 麒麟会情报', link: 'https://zx.bitdong.xyz', target: '_blank' },
     ],
 
     sidebar: {

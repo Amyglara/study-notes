@@ -99,6 +99,41 @@
   color: #c4b5fd !important;
 }
 
+/* 下拉菜单触发按钮 */
+.dark .VPNavBarMenuGroup .button {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  transition: color 0.2s !important;
+}
+.dark .VPNavBarMenuGroup .button:hover,
+.dark .VPNavBarMenuGroup.active .button {
+  color: #c4b5fd !important;
+}
+
+/* 下拉菜单面板 */
+.dark .VPFlyout .menu {
+  background: rgba(13, 13, 18, 0.95) !important;
+  border: 1px solid rgba(139, 92, 246, 0.18) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+  padding: 8px !important;
+}
+
+/* 下拉菜单项 */
+.dark .VPFlyout .VPMenuLink a {
+  border-radius: 8px !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.875rem !important;
+  padding: 8px 14px !important;
+  transition: all 0.15s !important;
+}
+.dark .VPFlyout .VPMenuLink a:hover {
+  background: rgba(139, 92, 246, 0.1) !important;
+  color: #c4b5fd !important;
+}
+
 /* ===== Hero 区 ===== */
 .VPHero {
   padding-top: 100px !important;
