@@ -79,13 +79,9 @@
   background-clip: text;
 }
 
-/* Logo 发光 */
+/* Logo emoji 直接展示，不加 filter */
 .VPNavBarTitle .logo {
-  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6));
-  transition: filter 0.3s;
-}
-.VPNavBarTitle .logo:hover {
-  filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.9));
+  font-size: 1.2rem;
 }
 
 /* Nav 链接 */
@@ -203,14 +199,28 @@
   font-weight: 400 !important;
 }
 
+/* Hero 按钮容器 - 强制两个按钮等高对齐 */
+.VPHero .actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
 /* Hero 按钮 - 主按钮 */
 .VPHero .VPButton.medium.brand {
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
-  border: none !important;
-  padding: 13px 32px !important;
+  border: 1px solid transparent !important;
+  padding: 0 32px !important;
+  height: 48px !important;
+  line-height: 46px !important;
   font-size: 0.975rem !important;
   font-weight: 600 !important;
   border-radius: 12px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
   box-shadow:
     0 0 0 1px rgba(139, 92, 246, 0.3),
     0 4px 20px rgba(124, 58, 237, 0.4),
@@ -247,12 +257,15 @@
   border: 1px solid rgba(139, 92, 246, 0.28) !important;
   color: #c4b5fd !important;
   border-radius: 12px !important;
-  padding: 13px 32px !important;
+  padding: 0 32px !important;
+  height: 48px !important;
+  line-height: 46px !important;
   font-size: 0.975rem !important;
   font-weight: 600 !important;
-  line-height: 1.5 !important;
-  transition: all 0.25s !important;
   box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  transition: all 0.25s !important;
 }
 
 .dark .VPHero .VPButton.medium.alt:hover {
@@ -751,6 +764,9 @@
 /* ===== Hero 头像图片 ===== */
 .VPHero .image-container {
   position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .VPHero .image-bg {
