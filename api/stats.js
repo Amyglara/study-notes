@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
     // 获取最近提交（repo commits API）
     const ghRes = await fetch(
-      `https://api.github.com/repos/Bitdong798/study-notes/commits?per_page=5`,
+      `https://api.github.com/repos/Amyglara/study-notes/commits?per_page=5`,
       {
         headers: {
           'Authorization': `token ${process.env.GITHUB_TOKEN}`,

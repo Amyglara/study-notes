@@ -1,5 +1,5 @@
 // GitHub API 工具层
-const OWNER = 'Bitdong798';
+const OWNER = 'Amyglara';
 const REPO = 'study-notes';
 const BRANCH = 'main';
 const BASE_URL = 'https://api.github.com';
