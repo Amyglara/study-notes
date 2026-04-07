@@ -797,15 +797,6 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-// 动态加载 Turndown（VitePress 构建可能过滤外部 script）
-(function loadTurndown(){
-  var s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/turndown/dist/turndown.js';
-  s.onload=function(){turndownService=new TurndownService({headingStyle:'atx',codeBlockStyle:'fenced',bulletListMarker:'-'});};
-  document.head.appendChild(s);
-})();
-</script>
-<script>
 // ═══════════════════════════════════════════════════════════
 //  STATE
 // ═══════════════════════════════════════════════════════════
@@ -1914,6 +1905,16 @@ function escHtml(str) {
 // ═══════════════════════════════════════════════════════════
 document.getElementById('outline-panel').style.display = 'none';
 document.getElementById('editor-split').classList.add('split-mode');
+
+// 动态加载 Turndown（WYSIWYG 模式需要 HTML→Markdown 转换）
+var _tdScript = document.createElement('script');
+_tdScript.src = 'https://cdn.jsdelivr.net/npm/turndown@7.2.0/dist/turndown.js';
+_tdScript.onload = function() {
+  if (typeof TurndownService !== 'undefined') {
+    turndownService = new TurndownService({headingStyle:'atx',codeBlockStyle:'fenced',bulletListMarker:'-'});
+  }
+};
+document.head.appendChild(_tdScript);
 
 if (TOKEN) {
   fetch('/api/articles', { headers: {'x-admin-token': TOKEN} })
