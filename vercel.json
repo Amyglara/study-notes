@@ -6,5 +6,10 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/upload.js": {
+      "includeFiles": "**/*"
+    }
+  }
 }
